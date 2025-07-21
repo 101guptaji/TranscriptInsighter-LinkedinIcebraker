@@ -33,7 +33,7 @@ app.add_middleware(
 async def root():
     return {"message": "Hello World"}
 
-
+# Transcript request model
 class TranscriptRequest(BaseModel):
     transcript: str
 
@@ -78,3 +78,52 @@ async def generate_insight(data: TranscriptRequest):
     }).execute()
 
     return {"success": True, "insight": res.text, "metadata": metadata}
+
+# LinkedIn Icebreaker 
+class LinkedInIcebreaker(BaseModel):
+    linkedInBio: str
+    pitchDeck: object = None
+
+@app.post("/api/generate-icebreaker")
+async def generate_icebreaker(data: LinkedInIcebreaker):
+    # print("Received LinkedIn bio:", data.linkedInBio)
+    # print("Received pitch deck: ", data.pitchDeck)
+    prompt = f"""You are an expert in crafting personalized LinkedIn icebreakers.
+        Based on the following LinkedIn bio of a person and the pitch deck of our company: 
+        1. Identify the LinkedIn profile's company and fetch:
+        - Their official LinkedIn page
+        - Their website URL
+        2. From the pitch deck, extract and list:
+        - Buying signals relevant to this person
+        - Why each signal matters
+        - Source of each signal (deck slide, metric, value prop, etc.)
+        - Discovery triggers you noticed
+        - Smart questions to ask in the next meeting
+        3. Provide insights at two levels:
+        - Company level (goals, pain points, buying readiness)
+        - Role level (motivations, decision criteria, job pressures)
+        4. Analyze their preferred buying style (e.g., analytical, visionary, price-sensitive, consensus-based) and explain how you inferred it.
+        5. Give a 1-paragraph summary of:
+        - What matters most to this person
+        - How we should position ourselves in the next interaction
+        6. Suggest 3 reflection questions for me to think about before engaging.
+        7. Finally, from their perspective:
+        - List Top 5 things they would find valuable in our deck
+        - Identify what parts might be unclear, irrelevant, or weak, and explain why
+        - Recommend how we can improve or reposition those parts
+
+        Bio: {data.linkedInBio}"""
+
+    if data.pitchDeck:
+        prompt += f"\nPitch Deck: {data.pitchDeck}"
+
+    client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
+
+    res = client.models.generate_content(
+        model="gemini-1.5-flash", 
+        contents=prompt,
+    )
+
+    # print(f"Gemini API response: {res.text}")
+
+    return {"success": True, "icebreaker": res.text}
