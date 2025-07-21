@@ -12,34 +12,34 @@ Deployment:	Vercel (Frontend), Render(Backend)
 
 ## Features
 1. Transcript Insight
-Paste a meeting transcript
+        Paste a meeting transcript
 
-Enter metadata: Company name, Attendees, Date
+        Enter metadata: Company name, Attendees, Date
 
-Get AI-generated:
+        Get AI-generated:
 
-What you did well
+        What you did well
 
-How you can improve
+        How you can improve
 
-Suggestions for next time
+        Suggestions for next time
 
-Stored and retrieved via Supabase
+        Stored and retrieved via Supabase
 
 2. LinkedIn Icebreaker
-Paste a LinkedIn bio and optional pitch deck
+        Paste a LinkedIn bio and optional pitch deck
 
-Get cold outreach insights and discovery questions
+        Get cold outreach insights and discovery questions
 
-Stored using Supabase
+        Stored using Supabase
 
-Results displayed in a feed-style layout
+        Results displayed in a feed-style layout
 
 ## Project Structure
-root/
-├── frontend/     # Next.js app (UI)
-├── backend/      # FastAPI app (API + Supabase)
-├── README.md     # This file
+    root/
+    ├── frontend/     # Next.js app (UI) 
+    ├── backend/      # FastAPI app (API + Supabase)
+    ├── README.md     # This file
 
 ## Setup Instructions
 🖥️ Frontend (Next.js)
@@ -80,4 +80,3 @@ root/
         created_at	timestamptz (default: now())
 
 📸 Screenshots
-(Add screenshots of the UI to better showcase the MVP)
