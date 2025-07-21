@@ -1,0 +1,8 @@
+FastAPI
+uvicorn
+pydantic
+supabase
+python-dotenv
+genai
+fastapi
+google-genai
