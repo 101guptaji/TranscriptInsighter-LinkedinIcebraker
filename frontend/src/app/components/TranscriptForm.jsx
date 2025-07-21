@@ -12,11 +12,15 @@ export default function TranscriptForm({ setInsight, setMetadata }) {
       return;
     }
 
-    console.log("Submitting transcript:", transcript);
+    // console.log("Submitting transcript:", transcript);
 
     try {
       setLoading(true);
-      const res = await fetch("http://127.0.0.1:8000/api/generate-insight", {
+      setInsight(null);
+      setMetadata(null);
+      
+      // http://127.0.0.1:8000/api/generate-insight
+      const res = await fetch("https://transcriptinsight-linkedinicebreaker.onrender.com/api/generate-insight", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ transcript }),
@@ -35,7 +39,7 @@ export default function TranscriptForm({ setInsight, setMetadata }) {
       alert("Failed to generate insight. Please try again.");
     }
   }
-  
+
   return (
     <div className="p-4 max-w-xl mx-auto space-y-4">
       <textarea

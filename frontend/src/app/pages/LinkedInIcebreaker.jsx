@@ -20,7 +20,7 @@ const LinkedInIcebreaker = () => {
         try {
             setLoading(true);
             setIcebreaker(null);
-            const res = await fetch("http://127.0.0.1:8000/api/generate-icebreaker", {
+            const res = await fetch(`https://transcriptinsight-linkedinicebreaker.onrender.com/api/generate-icebreaker`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ linkedInBio, pitchDeck }),
