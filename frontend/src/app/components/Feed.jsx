@@ -15,7 +15,7 @@ export default function Feed({ insight, metadata }) {
                             </div>
                         )}
 
-                        <p><strong>Insight:</strong> {insight}</p>
+                        <pre className="whitespace-pre-wrap"><strong>Insight:</strong> {insight}</pre>
                     </div>
                 </div>
             )}

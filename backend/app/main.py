@@ -62,7 +62,7 @@ async def generate_insight(data: TranscriptRequest):
     client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
 
     res = client.models.generate_content(
-        model="gemini-1.5-flash", 
+        model="gemini-2.5-flash", 
         contents=prompt,
     )
 
@@ -86,8 +86,8 @@ class LinkedInIcebreaker(BaseModel):
 
 @app.post("/api/generate-icebreaker")
 async def generate_icebreaker(data: LinkedInIcebreaker):
-    # print("Received LinkedIn bio:", data.linkedInBio)
-    # print("Received pitch deck: ", data.pitchDeck)
+    print("Received LinkedIn bio:", data.linkedInBio)
+    print("Received pitch deck: ", data.pitchDeck)
     prompt = f"""You are an expert in crafting personalized LinkedIn icebreakers.
         Based on the following LinkedIn bio of a person and the pitch deck of our company: 
         1. Identify the LinkedIn profile's company and fetch:
@@ -120,7 +120,7 @@ async def generate_icebreaker(data: LinkedInIcebreaker):
     client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
 
     res = client.models.generate_content(
-        model="gemini-1.5-flash", 
+        model="gemini-2.5-flash", 
         contents=prompt,
     )
 

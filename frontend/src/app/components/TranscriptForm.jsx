@@ -7,23 +7,35 @@ export default function TranscriptForm({ setInsight, setMetadata }) {
   const [loading, setLoading] = useState(false);
 
   async function handleSubmit() {
+    if (!transcript) {
+      alert("Please fill in the transcript field.");
+      return;
+    }
+
     console.log("Submitting transcript:", transcript);
 
-    setLoading(true);
-    const res = await fetch("http://127.0.0.1:8000/api/generate-insight", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ transcript }),
-    });
-    const data = await res.json();
-    console.log("API response:", data);
-    
-    setInsight(data.insight);
-    setMetadata(data.metadata);
-    setTranscript("");
-    setLoading(false);
-  }
+    try {
+      setLoading(true);
+      const res = await fetch("http://127.0.0.1:8000/api/generate-insight", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ transcript }),
+      });
+      const data = await res.json();
+      console.log("API response:", data);
 
+      setInsight(data.insight);
+      setMetadata(data.metadata);
+      setTranscript("");
+      setLoading(false);
+    }
+    catch (error) {
+      console.error("Error fetching insight:", error);
+      setLoading(false);
+      alert("Failed to generate insight. Please try again.");
+    }
+  }
+  
   return (
     <div className="p-4 max-w-xl mx-auto space-y-4">
       <textarea

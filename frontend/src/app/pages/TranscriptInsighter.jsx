@@ -8,9 +8,9 @@ const TranscriptInsighter = () => {
   const [metadata, setMetadata] = useState(null)
   
   return (
-    <div>
+    <div className='w-1/2 mx-auto p-6 bg-white rounded shadow'>
       <h1 className="text-3xl font-bold text-center mb-6">
-        Transcript Insight App
+        Transcript Insighter
       </h1>
       <TranscriptForm setInsight={setInsight} setMetadata={setMetadata} />
       <Feed insight={insight} metadata={metadata} />
