@@ -5,9 +5,13 @@
 
 ## Tech Stack
 Frontend:	Next.js, TailwindCSS, Shadcn UI
+
 Backend:	FastAPI
+
 Database:	Supabase
+
 AI:	OpenAI / Gemini
+
 Deployment:	Vercel (Frontend), Render(Backend)
 
 ## Features
