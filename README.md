@@ -18,24 +18,17 @@ Deployment:	Vercel (Frontend), Render(Backend)
 1. Transcript Insight
         Paste a meeting transcript
 
-        Enter metadata: Company name, Attendees, Date
-
+        Application captures and stores metadata: Company name, Attendees, Date
         Get AI-generated:
-
-        What you did well
-
-        How you can improve
-
-        Suggestions for next time
-
-        Stored and retrieved via Supabase
+            What you did well
+            How can you improve
+            Suggestions for next time
+            Stored and retrieved via Supabase
 
 2. LinkedIn Icebreaker
-        Paste a LinkedIn bio and optional pitch deck
+        Paste a LinkedIn bio and pitch deck
 
         Get cold outreach insights and discovery questions
-
-        Stored using Supabase
 
         Results displayed in a feed-style layout
 
